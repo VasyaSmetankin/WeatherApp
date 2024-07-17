@@ -1,9 +1,11 @@
-//
-//  WeatherAppUITests.swift
-//  WeatherAppUITests
-//
-//  Created by Vasya Smetankin on 16.07.2024.
-//
+//________________________________
+//< created by Medvedev Konstantin >
+//--------------------------------
+//       \   ^__^
+//        \  (oo)\_______
+//           (__)\       )\/\
+//               ||----w |
+//               ||     ||
 
 import XCTest
 
