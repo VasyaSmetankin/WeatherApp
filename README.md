@@ -1,2 +1,6 @@
 # WeatherApp
-Weather application 
+Weather application for VK test assignment
+
+Features:
+
+none :(
