@@ -19,6 +19,7 @@
 		5F82655C2C47E7F100F75289 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82655B2C47E7F100F75289 /* WeatherModel.swift */; };
 		5F8265632C47E8C700F75289 /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265622C47E8C700F75289 /* WeatherEnum.swift */; };
 		5F8265652C47ED8800F75289 /* ScrollViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */; };
+		5F82656A2C481BB000F75289 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265692C481BB000F75289 /* WeatherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5F82655B2C47E7F100F75289 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		5F8265622C47E8C700F75289 /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 		5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewItemViewController.swift; sourceTree = "<group>"; };
+		5F8265692C481BB000F75289 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		5F82652A2C46A4F000F75289 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				5F8265682C481B9B00F75289 /* ViewModels */,
 				5F8265612C47E8B600F75289 /* Enums */,
 				5F82655E2C47E81500F75289 /* Model */,
 				5F82655D2C47E7FA00F75289 /* App */,
@@ -174,6 +177,14 @@
 				5F8265622C47E8C700F75289 /* WeatherEnum.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		5F8265682C481B9B00F75289 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5F8265692C481BB000F75289 /* WeatherService.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				5F8265632C47E8C700F75289 /* WeatherEnum.swift in Sources */,
 				5F8265302C46A4F000F75289 /* ViewController.swift in Sources */,
 				5F82652C2C46A4F000F75289 /* AppDelegate.swift in Sources */,
+				5F82656A2C481BB000F75289 /* WeatherService.swift in Sources */,
 				5F8265652C47ED8800F75289 /* ScrollViewItemViewController.swift in Sources */,
 				5F82655C2C47E7F100F75289 /* WeatherModel.swift in Sources */,
 				5F82652E2C46A4F000F75289 /* SceneDelegate.swift in Sources */,
