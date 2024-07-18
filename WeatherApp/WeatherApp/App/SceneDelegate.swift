@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         
-        let newInitialViewController = ScrollViewItemViewController()
+        let newInitialViewController = ViewController()
         
         
         window = UIWindow(windowScene: windowScene)

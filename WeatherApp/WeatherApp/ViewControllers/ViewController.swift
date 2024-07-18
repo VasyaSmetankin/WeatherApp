@@ -12,25 +12,28 @@ import UIKit
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
+    var weatherService = WeatherService()
     
     let scrollView = UIScrollView()
     let contentView = UIView()
     let itemWidth: CGFloat = 150.0
-    let colors: [UIColor] = [.red, .green, .blue, .yellow, .purple]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScrollView()
         setupContentView()
         addContentToScrollView()
-        
     }
     
     func setupScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.isPagingEnabled = true 
+        scrollView.frame = view.bounds
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(weatherService.WeatherStatuses.count * 2), height: view.frame.height)
+        scrollView.isPagingEnabled = true
+        scrollView.layer.borderWidth = 1.0
+        scrollView.layer.borderColor = UIColor.black.cgColor
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
@@ -42,7 +45,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupContentView() {
-        view.backgroundColor = colors.first
+        view.backgroundColor = UIColor.white
         contentView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(contentView)
         
@@ -56,84 +59,62 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addContentToScrollView() {
-        //let colors: [UIColor] = [.red, .green, .blue, .yellow, .purple]
         var previousView: UIView? = nil
+        let totalCount = weatherService.WeatherStatuses.count * 2
         
-        for i in 0..<colors.count {
-            let view = UIView()
-            view.backgroundColor = colors[i]
-            view.layer.borderWidth = 1.0
-            view.layer.borderColor = UIColor.black.cgColor
-            view.translatesAutoresizingMaskIntoConstraints = false
+        for i in 0..<totalCount {
+            let content = weatherService.getItemByIndex(index: i % weatherService.WeatherStatuses.count)
+            let contentViewController = ScrollViewItemViewController(label: content.weatherTitle, imagename: content.weatherAssetName)
+            addChild(contentViewController)
+            contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            contentViewController.didMove(toParent: self)
+            contentView.addSubview(contentViewController.view)
             
-            let image = UIImageView(image: UIImage(named: "WeatherIcon1"))
-            
-            
-            
-            
-            contentView.addSubview(view)
-
             NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: contentView.topAnchor),
-                view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-                view.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+                contentViewController.view.topAnchor.constraint(equalTo: contentView.topAnchor),
+                contentViewController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                contentViewController.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
             ])
             
             if let previousView = previousView {
-                view.leadingAnchor.constraint(equalTo: previousView.trailingAnchor).isActive = true
+                contentViewController.view.leadingAnchor.constraint(equalTo: previousView.trailingAnchor).isActive = true
             } else {
-                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+                contentViewController.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             }
             
-            previousView = view
+            previousView = contentViewController.view
         }
         
         if let previousView = previousView {
             previousView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         }
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let pageWidth = scrollView.bounds.width
-        let targetXContentOffset = targetContentOffset.pointee.x
-        let contentWidth = scrollView.contentSize.width
         
-        var newPage = round(targetXContentOffset / pageWidth)
-        
-        if newPage < 0 {
-            newPage = 0
-        } else if newPage > (contentWidth / pageWidth) {
-            newPage = floor(contentWidth / pageWidth)
-        }
-        
-        targetContentOffset.pointee.x = newPage * pageWidth
+        // Начальная позиция
+        scrollView.contentOffset = CGPoint(x: scrollView.frame.width * CGFloat(weatherService.WeatherStatuses.count), y: 0)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         let contentOffsetX = scrollView.contentOffset.x
         let pageWidth = scrollView.bounds.width
-        let page = Int(contentOffsetX / pageWidth)
+        let page = contentOffsetX / pageWidth
         
-        if page >= 0 && page < colors.count - 1 {
-            let progress = (contentOffsetX - (CGFloat(page) * pageWidth)) / pageWidth
-            view.backgroundColor = blend(from: colors[page], to: colors[page + 1], progress: progress)
+        if contentOffsetX <= 0 {
+            scrollView.contentOffset = CGPoint(x: pageWidth * CGFloat(weatherService.WeatherStatuses.count), y: 0)
+        } else if contentOffsetX >= pageWidth * CGFloat(weatherService.WeatherStatuses.count * 2 - 1) {
+            scrollView.contentOffset = CGPoint(x: pageWidth * CGFloat(weatherService.WeatherStatuses.count - 1), y: 0)
         }
     }
     
-    func blend(from color1: UIColor, to color2: UIColor, progress: CGFloat) -> UIColor {
-        var (r1, g1, b1, a1): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
-        var (r2, g2, b2, a2): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let contentOffsetX = scrollView.contentOffset.x
+        let pageWidth = scrollView.bounds.width
+        let page = contentOffsetX / pageWidth
         
-        color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
-        color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
-        
-        let r = r1 + (r2 - r1) * progress
-        let g = g1 + (g2 - g1) * progress
-        let b = b1 + (b2 - b1) * progress
-        let a = a1 + (a2 - a1) * progress
-        
-        return UIColor(red: r, green: g, blue: b, alpha: a)
+        if page == 0 {
+            scrollView.contentOffset = CGPoint(x: pageWidth * CGFloat(weatherService.WeatherStatuses.count), y: 0)
+        } else if page == CGFloat(weatherService.WeatherStatuses.count * 2 - 1) {
+            scrollView.contentOffset = CGPoint(x: pageWidth * CGFloat(weatherService.WeatherStatuses.count - 1), y: 0)
+        }
     }
 }
 

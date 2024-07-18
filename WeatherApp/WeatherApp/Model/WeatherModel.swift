@@ -17,13 +17,14 @@ import Foundation
 
 
 final class Weather {
-    var weatherName: String
+    var weatherTitle: String
     var weatherType: WeatherType
+    var weatherAssetName: String
     
-    
-    init(weatherName: String, weatherType: WeatherType) {
-        self.weatherName = weatherName
+    init(weatherTitle: String, weatherType: WeatherType, weatherAssetName: String) {
+        self.weatherTitle = weatherTitle
         self.weatherType = weatherType
+        self.weatherAssetName = weatherAssetName
     }
     
 }
