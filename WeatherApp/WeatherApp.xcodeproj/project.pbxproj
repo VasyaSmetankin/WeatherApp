@@ -20,6 +20,8 @@
 		5F8265632C47E8C700F75289 /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265622C47E8C700F75289 /* WeatherEnum.swift */; };
 		5F8265652C47ED8800F75289 /* ScrollViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */; };
 		5F82656A2C481BB000F75289 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265692C481BB000F75289 /* WeatherService.swift */; };
+		5FB306AF2C499847006B4478 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB306AE2C499847006B4478 /* BackgroundService.swift */; };
+		5FB306B12C499912006B4478 /* PhaseGradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		5F8265622C47E8C700F75289 /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 		5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewItemViewController.swift; sourceTree = "<group>"; };
 		5F8265692C481BB000F75289 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		5FB306AE2C499847006B4478 /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
+		5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGradientViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 			children = (
 				5F82652F2C46A4F000F75289 /* ViewController.swift */,
 				5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */,
+				5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5F8265692C481BB000F75289 /* WeatherService.swift */,
+				5FB306AE2C499847006B4478 /* BackgroundService.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -323,8 +329,10 @@
 				5F82652C2C46A4F000F75289 /* AppDelegate.swift in Sources */,
 				5F82656A2C481BB000F75289 /* WeatherService.swift in Sources */,
 				5F8265652C47ED8800F75289 /* ScrollViewItemViewController.swift in Sources */,
+				5FB306B12C499912006B4478 /* PhaseGradientViewController.swift in Sources */,
 				5F82655C2C47E7F100F75289 /* WeatherModel.swift in Sources */,
 				5F82652E2C46A4F000F75289 /* SceneDelegate.swift in Sources */,
+				5FB306AF2C499847006B4478 /* BackgroundService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

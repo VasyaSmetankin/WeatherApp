@@ -14,22 +14,22 @@ struct WeatherService {
     init() {
         self.WeatherStatuses = [
             Weather(
-                weatherTitle: "1 sunny",
+                weatherTitle: "sunny",
                 weatherType: .sunny,
                 weatherAssetName: "WeatherIcon-22"
             ),
             Weather(
-                weatherTitle: "2 cloudy",
+                weatherTitle: "cloudy",
                 weatherType: .cloudy,
                 weatherAssetName: "WeatherIcon-32"
             ),
             Weather(
-                weatherTitle: "3 thunder",
+                weatherTitle: "thunder",
                 weatherType: .thunder,
                 weatherAssetName: "WeatherIcon-14"
             ),
             Weather(
-                weatherTitle: "4 windy",
+                weatherTitle: "windy",
                 weatherType: .windy,
                 weatherAssetName: "WeatherIcon-6"
             )
