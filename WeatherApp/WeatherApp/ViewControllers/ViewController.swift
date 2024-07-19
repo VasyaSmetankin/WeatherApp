@@ -96,7 +96,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
              previousView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
          }
          
-         // Начальная позиция
+         
          scrollView.contentOffset = CGPoint(x: scrollView.frame.width * CGFloat(weatherService.WeatherStatuses.count), y: 0)
      }
      

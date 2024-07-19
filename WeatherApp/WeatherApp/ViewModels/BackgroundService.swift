@@ -6,26 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 
-extension WeatherType {
-    enum WeatherType {
-        case sunny
-        case windy
-        case cloudy
-        case thunder
-        case snowy
-    }
-}
+
+
 
 
 struct BackgroundService {
-    
-    var weathertype: WeatherType
-    
-    
-    
-    
-    
-    
+    static let shared = BackgroundService()
+    var weatherColors: [WeatherType : [UIColor]] = [
+        .sunny : [.yellow],
+        .windy : [.lightGray],
+        .cloudy : [.gray],
+        .thunder : [.darkGray],
+        .snowy : [.lightGray]
+    ]
 }
+
+
+
+
+

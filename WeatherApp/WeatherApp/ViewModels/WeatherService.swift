@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct WeatherService {
     var WeatherStatuses: [Weather]
-    
     init() {
         self.WeatherStatuses = [
             Weather(
@@ -34,11 +34,12 @@ struct WeatherService {
                 weatherAssetName: "WeatherIcon-6"
             )
         ]
+        
+        
+        
     }
     
     func getItemByIndex(index: Int) -> Weather {
         return WeatherStatuses[index]
     }
-    
-    
 }

@@ -13,7 +13,7 @@ class PhaseGradientViewController: UIViewController {
     let phaseGradientLayer = CAGradientLayer()
     let skyGradientLayer = CAGradientLayer()
     
-    let phases: [UIColor] = [.blue, .red, .green, .orange, .yellow, .purple, .systemMint, .systemPink]
+    let phases: [UIColor] = [.white]
     var currentPhaseIndex = 0
 
     override func viewDidLoad() {
@@ -26,19 +26,19 @@ class PhaseGradientViewController: UIViewController {
         animatedView.frame = view.bounds
         view.addSubview(animatedView)
         
-        // lower layer
+        // lower sky layer
         skyGradientLayer.frame = view.bounds
         skyGradientLayer.colors = [
             UIColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1).cgColor,
             UIColor.white.cgColor
         ]
-        skyGradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        skyGradientLayer.endPoint = CGPoint(x: 2, y: 2)
+        skyGradientLayer.startPoint = CGPoint(x: 1, y: 0)
+        skyGradientLayer.endPoint = CGPoint(x: 1.5, y: 1.5)
         animatedView.layer.addSublayer(skyGradientLayer)
         
         // upper layer
         phaseGradientLayer.frame = view.bounds
-        phaseGradientLayer.startPoint = CGPoint(x: 1, y: 0)
+        phaseGradientLayer.startPoint = CGPoint(x: 1, y: 1)
         phaseGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         updateGradientColors()
         animatedView.layer.addSublayer(phaseGradientLayer)
