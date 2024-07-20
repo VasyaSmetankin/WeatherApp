@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         setupScrollView()
         setupContentView()
         addContentToScrollView()
+        selectRandomScrollViewItem()
     }
     
     func setupBackgroundGradientViewController() {
@@ -97,8 +98,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         if let previousView = previousView {
             previousView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         }
-        
-        scrollView.contentOffset = CGPoint(x: scrollView.frame.width * CGFloat(weatherService.WeatherStatuses.count), y: 0)
+    }
+    
+    func selectRandomScrollViewItem() {
+        let totalCount = weatherService.WeatherStatuses.count * 2
+        let randomIndex = Int.random(in: 0..<totalCount)
+        let pageWidth = scrollView.frame.width
+        scrollView.contentOffset = CGPoint(x: pageWidth * CGFloat(randomIndex), y: 0)
+        updateGradientForCurrentIndex(randomIndex: randomIndex)
+    }
+    
+    func updateGradientForCurrentIndex(randomIndex: Int) {
+        let weatherIndex = randomIndex % weatherService.WeatherStatuses.count
+        let weather = weatherService.getItemByIndex(index: weatherIndex)
+        if let colors = backgroundService.weatherColors[weather.weatherType] {
+            gradientVC.startPhaseTransition(to: colors)
+        }
+        gradientVC.currentPhaseIndex = weatherIndex
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

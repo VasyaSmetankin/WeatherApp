@@ -116,7 +116,6 @@
 				5F82655E2C47E81500F75289 /* Model */,
 				5F82655D2C47E7FA00F75289 /* App */,
 				5F8265602C47E84C00F75289 /* ViewControllers */,
-				5F82655F2C47E82B00F75289 /* Storyboards */,
 				5F8265342C46A4F100F75289 /* Assets.xcassets */,
 				5F8265392C46A4F100F75289 /* Info.plist */,
 			);
@@ -172,6 +171,7 @@
 				5F82652F2C46A4F000F75289 /* ViewController.swift */,
 				5F8265642C47ED8800F75289 /* ScrollViewItemViewController.swift */,
 				5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */,
+				5F82655F2C47E82B00F75289 /* Storyboards */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
