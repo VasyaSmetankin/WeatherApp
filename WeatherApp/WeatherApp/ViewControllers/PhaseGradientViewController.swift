@@ -33,7 +33,7 @@ class PhaseGradientViewController: UIViewController {
             UIColor.white.cgColor
         ]
         skyGradientLayer.startPoint = CGPoint(x: 1, y: 0)
-        skyGradientLayer.endPoint = CGPoint(x: 1.2, y: 1.2)
+        skyGradientLayer.endPoint = CGPoint(x: 1, y: 1.2)
         animatedView.layer.addSublayer(skyGradientLayer)
         
         // upper layers
@@ -50,7 +50,7 @@ class PhaseGradientViewController: UIViewController {
     func setupPhaseGradientLayer(_ layer: CAGradientLayer) {
         layer.frame = view.bounds
         layer.startPoint = CGPoint(x: 1, y: 0)
-        layer.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.endPoint = CGPoint(x: 1, y: 0.3)
         layer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
     }
     
