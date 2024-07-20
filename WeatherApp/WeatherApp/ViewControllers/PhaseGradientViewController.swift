@@ -10,16 +10,16 @@ import UIKit
 class PhaseGradientViewController: UIViewController {
     
     let animatedView = UIView()
-    let phaseGradientLayer = CAGradientLayer()
+    let phaseGradientLayer1 = CAGradientLayer()
+    let phaseGradientLayer2 = CAGradientLayer()
     let skyGradientLayer = CAGradientLayer()
     
-    let phases: [UIColor] = [.white]
+    var isLayer1Active = true
     var currentPhaseIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGradientLayer()
-        startPhaseAnimation()
     }
     
     func setupGradientLayer() {
@@ -33,35 +33,51 @@ class PhaseGradientViewController: UIViewController {
             UIColor.white.cgColor
         ]
         skyGradientLayer.startPoint = CGPoint(x: 1, y: 0)
-        skyGradientLayer.endPoint = CGPoint(x: 1.5, y: 1.5)
+        skyGradientLayer.endPoint = CGPoint(x: 1.2, y: 1.2)
         animatedView.layer.addSublayer(skyGradientLayer)
         
-        // upper layer
-        phaseGradientLayer.frame = view.bounds
-        phaseGradientLayer.startPoint = CGPoint(x: 1, y: 1)
-        phaseGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        updateGradientColors()
-        animatedView.layer.addSublayer(phaseGradientLayer)
+        // upper layers
+        setupPhaseGradientLayer(phaseGradientLayer1)
+        setupPhaseGradientLayer(phaseGradientLayer2)
+        
+        animatedView.layer.addSublayer(phaseGradientLayer1)
+        animatedView.layer.addSublayer(phaseGradientLayer2)
+        
+        phaseGradientLayer1.opacity = 1.0
+        phaseGradientLayer2.opacity = 0.0
     }
     
-    func startPhaseAnimation() {
-        let animator = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut) {
-            self.updateGradientColors()
-        }
-        
-        animator.addCompletion { position in
-            if position == .end {
-                self.startPhaseAnimation()
-            }
-        }
-        
-        animator.startAnimation()
+    func setupPhaseGradientLayer(_ layer: CAGradientLayer) {
+        layer.frame = view.bounds
+        layer.startPoint = CGPoint(x: 1, y: 0)
+        layer.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
     }
     
-    func updateGradientColors() {
-        let currentColor = phases[currentPhaseIndex]
-        let transparentColor = currentColor.withAlphaComponent(0)
-        phaseGradientLayer.colors = [currentColor.cgColor, transparentColor.cgColor]
-        currentPhaseIndex = (currentPhaseIndex + 1) % phases.count
+    func startPhaseTransition(to colors: [UIColor]) {
+        let transparentColor = colors[0].withAlphaComponent(0)
+        let targetLayer = isLayer1Active ? phaseGradientLayer2 : phaseGradientLayer1
+        targetLayer.colors = [colors[0].cgColor, transparentColor.cgColor]
+        
+        let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeOutAnimation.fromValue = 1.0
+        fadeOutAnimation.toValue = 0.0
+        fadeOutAnimation.duration = 1.0
+        fadeOutAnimation.fillMode = .forwards
+        fadeOutAnimation.isRemovedOnCompletion = false
+        
+        let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeInAnimation.fromValue = 0.0
+        fadeInAnimation.toValue = 1.0
+        fadeInAnimation.duration = 1.0
+        fadeInAnimation.fillMode = .forwards
+        fadeInAnimation.isRemovedOnCompletion = false
+        
+        let activeLayer = isLayer1Active ? phaseGradientLayer1 : phaseGradientLayer2
+        activeLayer.add(fadeOutAnimation, forKey: "fadeOut")
+        targetLayer.add(fadeInAnimation, forKey: "fadeIn")
+        
+        isLayer1Active.toggle()
     }
 }
+
