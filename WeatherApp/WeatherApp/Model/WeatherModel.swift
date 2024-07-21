@@ -17,15 +17,18 @@ import Foundation
 
 
 final class Weather {
-    var weatherTitle: String
+    var weatherTitleKey: String
     var weatherType: WeatherType
     var weatherAssetName: String
     
-    init(weatherTitle: String, weatherType: WeatherType, weatherAssetName: String) {
-        self.weatherTitle = weatherTitle
+    var weatherTitle: String {
+        return NSLocalizedString(weatherTitleKey, comment: "")
+    }
+    
+    init(weatherTitleKey: String, weatherType: WeatherType, weatherAssetName: String) {
+        self.weatherTitleKey = weatherTitleKey
         self.weatherType = weatherType
         self.weatherAssetName = weatherAssetName
     }
-    
 }
 

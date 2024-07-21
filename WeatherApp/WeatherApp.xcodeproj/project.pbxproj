@@ -22,6 +22,7 @@
 		5F82656A2C481BB000F75289 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8265692C481BB000F75289 /* WeatherService.swift */; };
 		5FB306AF2C499847006B4478 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB306AE2C499847006B4478 /* BackgroundService.swift */; };
 		5FB306B12C499912006B4478 /* PhaseGradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */; };
+		5FB306B32C4D208B006B4478 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5FB306B22C4D208B006B4478 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		5F8265692C481BB000F75289 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		5FB306AE2C499847006B4478 /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		5FB306B02C499912006B4478 /* PhaseGradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGradientViewController.swift; sourceTree = "<group>"; };
+		5FB306B22C4D208B006B4478 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				5F8265602C47E84C00F75289 /* ViewControllers */,
 				5F8265342C46A4F100F75289 /* Assets.xcassets */,
 				5F8265392C46A4F100F75289 /* Info.plist */,
+				5FB306B22C4D208B006B4478 /* Localizable.xcstrings */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -274,11 +277,12 @@
 			};
 			buildConfigurationList = 5F8265232C46A4F000F75289 /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 5F82651F2C46A4F000F75289;
 			productRefGroup = 5F8265292C46A4F000F75289 /* Products */;
@@ -299,6 +303,7 @@
 			files = (
 				5F8265352C46A4F100F75289 /* Assets.xcassets in Resources */,
 				5F8265382C46A4F100F75289 /* Base in Resources */,
+				5FB306B32C4D208B006B4478 /* Localizable.xcstrings in Resources */,
 				5F8265332C46A4F100F75289 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

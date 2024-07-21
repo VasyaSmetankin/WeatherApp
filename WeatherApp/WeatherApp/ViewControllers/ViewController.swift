@@ -80,6 +80,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             contentViewController.didMove(toParent: self)
             contentView.addSubview(contentViewController.view)
             
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            contentViewController.view.addGestureRecognizer(tapGesture)
+            
             NSLayoutConstraint.activate([
                 contentViewController.view.topAnchor.constraint(equalTo: contentView.topAnchor),
                 contentViewController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -117,6 +120,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         gradientVC.currentPhaseIndex = weatherIndex
     }
     
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        scrollToNextItem()
+    }
+    
+    func scrollToNextItem() {
+        let contentOffsetX = scrollView.contentOffset.x
+        let pageWidth = scrollView.bounds.width
+        let currentPage = Int(contentOffsetX / pageWidth)
+        let nextPage = currentPage + 1
+        let totalCount = weatherService.WeatherStatuses.count * 2
+        
+        if nextPage < totalCount {
+            scrollView.setContentOffset(CGPoint(x: pageWidth * CGFloat(nextPage), y: 0), animated: true)
+        } else {
+            scrollView.setContentOffset(CGPoint(x: pageWidth * CGFloat(weatherService.WeatherStatuses.count), y: 0), animated: true)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffsetX = scrollView.contentOffset.x
         let pageWidth = scrollView.bounds.width
@@ -150,5 +171,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 }
+
 
 
