@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 struct WeatherService {
     var WeatherStatuses: [Weather]
     init() {
@@ -32,11 +31,28 @@ struct WeatherService {
                 weatherTitleKey: "weather_windy",
                 weatherType: .windy,
                 weatherAssetName: "WeatherIcon-6"
+            ),
+            Weather(
+                weatherTitleKey: "weather_snowy",
+                weatherType: .snowy,
+                weatherAssetName: "WeatherIcon-35"
+            ),
+            Weather(
+                weatherTitleKey: "weather_rainbow",
+                weatherType: .rainbow,
+                weatherAssetName: "WeatherIcon-44"
+            ),
+            Weather(
+                weatherTitleKey: "weather_dawn",
+                weatherType: .dawn,
+                weatherAssetName: "WeatherIcon-24"
+            ),
+            Weather(
+                weatherTitleKey: "weather_sunset",
+                weatherType: .sunset,
+                weatherAssetName: "WeatherIcon-23"
             )
         ]
-        
-        
-        
     }
     
     func getItemByIndex(index: Int) -> Weather {
