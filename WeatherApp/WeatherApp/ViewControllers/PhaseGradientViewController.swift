@@ -1,9 +1,11 @@
-//
-//  PhaseGradientViewController.swift
-//  WeatherApp
-//
-//  Created by Vasya Smetankin on 18.07.2024.
-//
+//________________________________
+//< created by Medvedev Konstantin >
+//--------------------------------
+//       \   ^__^
+//        \  (oo)\_______
+//           (__)\       )\/\
+//               ||----w |
+//               ||     ||
 
 import UIKit
 
