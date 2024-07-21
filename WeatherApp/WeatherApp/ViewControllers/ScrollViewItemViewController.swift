@@ -11,7 +11,6 @@
 import UIKit
 
 class ScrollViewItemViewController: UIViewController {
-    
     var imageView = UIImageView()
     var label = UILabel()
     
@@ -31,7 +30,6 @@ class ScrollViewItemViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
-        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -44,7 +42,6 @@ class ScrollViewItemViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         view.addSubview(label)
-        
         NSLayoutConstraint.activate([
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)

@@ -10,17 +10,10 @@
 
 import Foundation
 
-
-
-
-
-
-
 final class Weather {
     var weatherTitleKey: String
     var weatherType: WeatherType
     var weatherAssetName: String
-    
     var weatherTitle: String {
         return NSLocalizedString(weatherTitleKey, comment: "")
     }
